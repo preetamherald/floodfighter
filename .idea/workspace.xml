@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44b93835-bdc0-4cf9-b0d3-709b67b827bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daydream.html" beforeDir="false" afterPath="$PROJECT_DIR$/daydream.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,17 +18,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/daydream.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="210" column="43" selection-start-line="210" selection-start-column="43" selection-end-line="210" selection-end-column="43" />
+            <state relative-caret-position="368">
+              <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" />
                 <element signature="n#a-assets#0;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#a-entity#1;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#a-entity#2;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#a-entity#3;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#a-entity#4;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#a-curvedimage#2;n#a-entity#4;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#2;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
@@ -124,12 +123,12 @@
       <option name="presentableId" value="Default" />
       <updated>1552132468468</updated>
       <workItem from="1552132482592" duration="691000" />
-      <workItem from="1552150960303" duration="6768000" />
+      <workItem from="1552150960303" duration="7889000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7459000" />
+    <option name="totallyTimeSpent" value="8580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -196,17 +195,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/daydream.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="210" column="43" selection-start-line="210" selection-start-column="43" selection-end-line="210" selection-end-column="43" />
+        <state relative-caret-position="368">
+          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" />
             <element signature="n#a-assets#0;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#a-entity#1;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#a-entity#2;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#a-entity#3;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#a-entity#4;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#a-curvedimage#2;n#a-entity#4;n#a-scene#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#2;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>

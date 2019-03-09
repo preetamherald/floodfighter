@@ -62,7 +62,7 @@
                <a-cursor></a-cursor>
         </a-entity> -->
 		<a-camera position="0 6 -2" id="camx" class="subm"><a-cursor></a-cursor>
-			<a-entity position="0 2.99 0">
+			<a-entity position="0 2.5 0">
 				<a-box color="orange" scale="1.2 0.45 0.1" position="0 0 -4.2"></a-box>
 				<a-text value="Score" color="black" position="-0.3 0 -4"></a-text>
 				<a-text id="score" value="0" color="black" position="-0.1 -0.2 -4"></a-text>
@@ -157,7 +157,7 @@
 					  scale="0.15 0.15 0.15" rotation="90 180 90">
 		<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
 		<a-entity position="9.101 10.286 -19.071" rotation="0 180 0">
-			<a-box color="blue" scale="2.8 1 0.1" position="0 0 -4.2"></a-box>
+			<a-box color="white" scale="2.8 1 0.1" position="0 0 -4.2"></a-box>
 			<a-text id="valvetext1" value="Click on the check valve" color="black" position="-1.16 0 -4"></a-text>
 			<a-text id="valvetext2" value="to close it" color="black" position="-0.45 -0.2 -4"></a-text>
 		</a-entity>
@@ -281,18 +281,17 @@
 
 		function givePoint(id) {
 			var score = parseInt(document.getElementById('score').getAttribute('value'));
-			// console.log(typeof score);
-			score = score + 10;
-			document.getElementById('score').setAttribute('value',score);
 			var can = document.getElementsByClassName('point');
 			var pointerz = document.getElementsByClassName('canPointer');
 			if(id == 6){
+				score = score + 20;
 				document.getElementById('instructions3').setAttribute('visible',true);
 				document.getElementById('valvetext1').setAttribute('value','check valve closed');
 				document.getElementById('valvetext2').setAttribute('value','');
 				document.getElementById('pointer1').setAttribute('visible','false')
 			}
 			else{
+				score = score + 5;
 				can[id].setAttribute('visible','false');
 				pointerz[id].setAttribute('visible','false');
 				canCount++
@@ -300,6 +299,7 @@
 			if(canCount == 4){
 				document.getElementById('instructions4').setAttribute('visible',true)
 			}
+			document.getElementById('score').setAttribute('value',score);
 		}
 
 		function playScene() {
@@ -352,7 +352,7 @@
 				// document.getElementById('scene0').setAttribute('visible',true);
 				// document.getElementById('camx').setAttribute('position',"0 6 -2");
 				location.reload(true);
-				scene.enterVR();
+				// scene.enterVR();
 			}
 		}
 	</script>
