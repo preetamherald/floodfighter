@@ -1,5 +1,5 @@
 //version
-var appVersion = '7v.00';
+var appVersion = 'v.1.1';
 
 //Files to cache
 var files = [
