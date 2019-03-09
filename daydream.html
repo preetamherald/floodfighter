@@ -1,0 +1,497 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Flood:Fighter</title>
+	<!-- <script src="jslibrary/aframe.min.js"> </script> -->
+	<script src="jslibrary/build.js"> </script>
+	<script src="jslibrary/aframe-extras.loaders.min.js"> </script>
+	<script src="jslibrary/water.js"></script>
+	<script src="jslibrary/aframe-animation-component.js"></script>
+  <!--<script src="jslibrary/aframe-travel-component.min.js"></script>-->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<!--<body onload="sceneLoaded();">-->
+<body>
+	<a-scene>
+	 <!--Load Assets -->
+      <a-assets>
+		  <a-asset-item id="myBedroom" src="modellibrary/magica_voxel/bed_room.ply"></a-asset-item>
+		  <a-asset-item id="myBathroom" src="modellibrary/magica_voxel/bath_room.ply"></a-asset-item>
+		  <a-asset-item id="mykitchen" src="modellibrary/magica_voxel/kitchen.ply"></a-asset-item>
+		  <a-asset-item id="redcar" src="modellibrary/magica_voxel/red_car.ply"></a-asset-item>
+          <a-asset-item id="myWall" src="modellibrary/magica_voxel/plain_wall.ply"></a-asset-item>
+          <a-asset-item id="myFloor" src="modellibrary/magica_voxel/floor.ply"></a-asset-item>
+          <a-asset-item id="arrow-obj" src="modellibrary/objects/arrow.obj"></a-asset-item>
+          <a-asset-item id="arrow-mtl" src="modellibrary/objects/arrow.mtl"></a-asset-item>
+		  <a-asset-item id="can-obj" src="modellibrary/objects/tinCan.obj"></a-asset-item>
+		  <a-asset-item id="can-mtl" src="modellibrary/objects/tinCan.mtl"></a-asset-item>
+
+		  <img id="zelda" src="images/poster3.jpg">
+		  <img id="jack" src="images/poster2.jpg">
+		  <img id="eye" src="images/poster1.jpg">
+     	  <img id="warning" src="images/floodwarning.jpg">
+
+		  <img id="main" src="images/main.png">
+		  <img id="play" src="images/play.png">
+		  <img id="howto" src="images/howto.png">
+		  <img id="before" src="images/beforeflood.png">
+		  <img id="duringF" src="images/duringflood.png">
+		  <img id="menuBtn" src="images/menubtn.png">
+		  <img id="dontWhile" src="images/dontswhileflood.JPG">
+		  <img id="dosWhile" src="images/doswhileflood.JPG">
+		  <img id="floodWarning" src="images/floodwarning.png">
+		  <img id="controlsExplain" src="images/controlsExplain.png">
+		  <img id="continue" src="images/continue.png">
+		  <img id="stage2img" src="images/stage2.png">
+		  <img id="stage3img" src="images/stage3.png">
+		  <img id="stage4img" src="images/stage4.png">
+
+		  <video id="vid" src="video/vid.mp4"
+					 crossOrigin="anonymous"
+					 autoplay="false"
+					 loop="true"
+					 style="display: none"></video>
+      </a-assets>
+
+		<!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+		<!--Camera Setup-->
+
+		<!-- <a-entity position="1 7.5 1" camera look-controls wasd-controls>
+               <a-cursor></a-cursor>
+        </a-entity> -->
+		<a-camera position="6 7.25 -21" class="subm"><a-cursor></a-cursor>
+			<a-entity position="0 2.99 0">
+				<a-box color="orange" scale="1.2 0.45 0.1" position="0 0 -4.2"></a-box>
+				<a-text value="Score" color="black" position="-0.3 0 -4"></a-text>
+				<a-text id="score" value="0" color="black" position="-0.1 -0.2 -4"></a-text>
+				<!-- <a-text id="instruction" value="INSTRUCTION" color="black" scale="5 2 0.1" position="-4 -2 -4"></a-text>-->
+			</a-entity>
+			<a-entity id="instructions5" visible="false" position="0 -8 0">
+				<a-curvedimage src="#stage4img" height="11.0" radius="10.7" theta-length="80"
+							   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
+			</a-entity>
+		</a-camera>
+		<!--0 6 -2??-->
+		<!--&lt;!&ndash;travel points&ndash;&gt;-->
+		<!--<a-sphere position="4 .5 3" radius="0.25" color="#4CC3D9" travel-node="transition: fade"></a-sphere>-->
+		<!--<a-sphere position="4 0.5 -8" radius="0.25" color="#4CC3D9" travel-node="transition: fade"></a-sphere>-->
+		<!--&lt;!&ndash;Edited Code&ndash;&gt;-->
+		<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+		<!-- hand -->
+		<a-entity id='cursor' daydream-controls="hand: right" controller-cursor="color: red; radius: 0.01" raycaster="objects: .front .back .left .right"></a-entity>
+
+		<a-entity id="scene2" visible="true">
+
+		<!--Water Test -->
+		 <a-entity id="ocean" position="11.23614888234351 1 0" ocean="density:20;width:100;depth:100" material="color:#9CE3F9;opacity:0.75;roughness:1" rotation="-90 0 0">
+		 </a-entity>
+
+	 <!--Load Model-->
+		<a-entity ply-model="src:modellibrary/magica_voxel/bed_room.ply" rotation="-90 0 0" position="2.8606506106514367 -0.38149268996288477 0" scale="0.5 0.5 0.5">
+		<a-entity id="environmentSound" geometry="" sound="src:music/zelda_forest_saria_song.mp3;loop:true;volume:0.3"></a-entity></a-entity>
+
+	  <a-entity ply-model="src:modellibrary/magica_voxel/bath_room.ply" rotation="-90 0 0" position="1.3122614508592694 -0.12096138524066191 -23.478461853190854" scale="0.5 0.5 0.5"></a-entity>
+
+	  <a-entity ply-model="src:modellibrary/magica_voxel/kitchen.ply" rotation="-90 0 0" position="36.23535082726076 -0.12096138524066191 -21.568761799695306" scale="0.5 0.5 0.5"></a-entity>
+
+	  <a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="37.784666220435895 0 20.x622" scale="0.6709547926014008 0.5 0.744250614380796"></a-entity>
+	  <a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 90 0" position="59.15742544196631 0 -13.165" scale="1.197 0.5 0.7412208988535162"></a-entity><a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 90 0" position="-1.4457429188867756 0 -13.165" scale="1.197 0.5 0.741"></a-entity>
+	  <a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="20.04689909272449 0 -26.60249120052255" scale="1.4953123873240877 0.5 0.74"></a-entity><a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="7.079128045969208 18.099912560446366 20.43476074435125" scale="0.8947749837762695 0.5 0.3"></a-entity>
+	  <a-entity ply-model="src:modellibrary/magica_voxel/floor.ply" rotation="-90 0 0" position="20.662470380808497 26.76908430307794 -12.162913780119752" scale="1.5 1.2 0.5"></a-entity>
+	  <a-entity ply-model="src:modellibrary/magica_voxel/floor.ply" rotation="-90 0 0" position="21.419810851902614 -0.1779357237363275 -12.74154307676053" scale="1.5 1.2 0.5"></a-entity>
+
+	  <a-entity ply-model="src:modellibrary/magica_voxel/red_car.ply" scale="0.4 0.4 0.4" rotation="-90 29.999999999999996 14.999999999999998" position="3.2930301438922243 0.2 28.301849445121036"><a-animation attribute="position" from"3.2930301438922243="" 0.0="" 28.301849445121036"="" to="3.2930301438922243 0.2 28.301849445121036" delay="1000" dir="alternate" dur="1000" repeat="indefinite"></a-animation></a-entity>
+
+	  <a-entity ply-model="src:modellibrary/magica_voxel/tree_stem.ply" scale="0.4 0.4 0.4" position="26.351812914450313 0.19996174858888602 -3.190670436596765"><a-animation attribute="position" from"26.351812914450313="" 0.0="" -3.190670436596765""="" to="26.351812914450313 0.2 -3.190670436596765" delay="50" dir="alternate" dur="1000" repeat="indefinite"></a-animation></a-entity>
+
+	<!--External Environment -->
+		<a-plane scale="100 100 100" material="color:#acca48" rotation="-90 0 0" geometry="" position="11.562746692591237 0 0"> </a-plane>
+		<a-entity id="instructions1" visible="true">
+			<a-curvedimage src="#floodWarning" height="11.0" radius="10.7" theta-length="80"
+						   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
+			<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
+						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(1)" position="0 5.5 0"></a-curvedimage>
+		</a-entity>
+		<a-entity id="instructions2" visible="false">
+			<a-curvedimage src="#controlsExplain" height="11.0" radius="10.7" theta-length="80"
+						   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
+			<a-curvedimage id="continue2" src="#continue" radius="10" theta-length="14"
+						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(2)" position="0 4.5 0"></a-curvedimage>
+		</a-entity>
+	<!--Direction Light-->
+		<a-entity light="color:#EEE;intensity:0.5" position="1 1 0"></a-entity>
+		<a-entity light="type:ambient;color:#474242" intensity="0.4"></a-entity>
+
+	<!--point Lights-->
+		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="-7 15 7"></a-entity>
+		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="6 15 7"></a-entity>
+		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="-7 15 -5.5"></a-entity>
+		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="6 15 -5.5"></a-entity>
+
+		<!--images -->
+		<a-plane position="7.346272631048093 8.5 -11.8" scale="4.5 7.2 1"  material="src:#zelda" geometry=""> </a-plane> <!--Zelda-->
+		<a-plane position="-0.5341706908703032 7.1 -11.8" scale="5 4.2 1"  material="src:#eye" geometry=""> </a-plane> <!--Eye-->
+		<a-plane position="14.78555100215316 8.5 3.8057218733059064" scale="7 9.5 1"  material="src:#jack" rotation="0 -90 0" geometry=""> </a-plane> <!--jack-->
+		<a-plane position="-3.56 7.86 7.026" scale="4.2 2.5 1" rotation="0 180 0"  material="src:#warning" geometry=""> </a-plane>
+			<!--<a-box scale="5 5 5" position="27.17 10.84 3.375" id="tempID" color="white"></a-box>-->
+	<a-box scale="1 20 16" position="27.17 10.84 3.375" color="#ffbf00"></a-box>
+			<a-entity position="26.62 4.936 -6.90">
+			<a-box scale="1 1 4" position="0 0 0" rotation="0 0 -45" color="red" onclick="nextpage(5)"></a-box>
+			<a-text id="roof" value="Go to Roof" color="white" scale="2 1 1" rotation="-45 -90 0" position="-0.60 0.408 -0.79"></a-text>
+			</a-entity>
+
+			<a-entity id="roofPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="26.62 7 -6.90"
+					  scale="0.15 0.15 0.15" rotation="90 90 90" visible="false">
+				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
+
+		<a-box position="9.101 6.286 -14.371"
+		color="tomato" depth="1" height="1" width="1"
+		scale="1.4414369186377378 0.3035338460623169 0.34488297971855175"
+		material="" onclick="givePoint(6)" geometry="">
+		<a-animation attribute="rotation" begin="click"I
+		repeat="2" fill="forward" to="0 0 180"></a-animation></a-box>
+		<a-entity id="pointer1" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="9.101 8.286 -15.5"
+					  scale="0.15 0.15 0.15" rotation="90 180 90">
+		<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
+		<a-entity position="9.101 10.286 -19.071" rotation="0 180 0">
+			<a-box color="blue" scale="2.8 1 0.1" position="0 0 -4.2"></a-box>
+			<a-text id="valvetext1" value="Click on the check valve" color="black" position="-1.16 0 -4"></a-text>
+			<a-text id="valvetext2" value="to close it" color="black" position="-0.45 -0.2 -4"></a-text>
+		</a-entity>
+		<a-entity id="instructions3" visible="false">
+			<a-curvedimage src="#stage2img" height="11.0" radius="10.7" theta-length="80"
+						   rotation="0 412 0" scale="0.8 0.8 0.8" position="2.5 7.5 -24.4"></a-curvedimage>
+			<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
+						   rotation="0 450 0" scale="0.8 0.8 0.8" onclick="nextpage(3)" position="2 5.5 -24.1"></a-curvedimage>
+		</a-entity>
+
+			<a-box position="9.09887001644167 6.299476505302487 -13.949561294106223" color="tomato" depth="1" height="1" width="1" scale="0.32594592196228156 0.23831836238786325 0.7061697030813416" material="color:#d3d3d3" geometry=""></a-box>
+
+		<!--food can-->
+			<a-entity class="point" onclick="givePoint(0)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="25 5 -32" scale="10 10 10"></a-entity>
+			<a-entity class="point" onclick="givePoint(1)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="40 5 -32" scale="10 10 10"></a-entity>
+			<a-entity class="point" onclick="givePoint(2)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -20" scale="10 10 10"></a-entity>
+			<a-entity class="point" onclick="givePoint(3)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -15" scale="10 10 10"></a-entity>
+
+			<a-entity id="canPointerEntity" visible="false">
+			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="28 8 -30"
+					  scale="0.15 0.15 0.15" rotation="90 180 90">
+				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
+
+			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="42 8 -30"
+					  scale="0.15 0.15 0.15" rotation="90 180 90">
+				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
+
+			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="44 8 -18"
+					  scale="0.15 0.15 0.15" rotation="90 90 90">
+				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
+
+			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="44 8 -13"
+					  scale="0.15 0.15 0.15" rotation="90 90 90">
+				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
+			</a-entity>
+
+			<a-entity id="instructions4" visible="false" position="27.5 0 5">
+				<a-curvedimage src="#stage3img" height="11.0" radius="10.7" theta-length="80"
+							   rotation="0 412 0" scale="0.8 0.8 0.8" position="2.5 7.5 -24.4"></a-curvedimage>
+				<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
+							   rotation="0 450 0" scale="0.8 0.8 0.8" onclick="nextpage(4)" position="2 5.5 -24.1"></a-curvedimage>
+			</a-entity>
+		<!-- movement spheres -->
+	  <a-entity class="front" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="0 7.25 -1" scale="0.1 0.1 0.1" rotation="0 0 90"></a-entity>
+    <a-entity class="back" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="0 7.25 -3" scale="0.1 0.1 0.1" rotation="0 180 90"></a-entity>
+    <a-entity class="left" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="-1 7.25 -2" scale="0.1 0.1 0.1" rotation="0 -90 90"></a-entity>
+    <a-entity class="right" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="1 7.25 -2" scale="0.1 0.1 0.1" rotation="0 90 90"></a-entity>
+
+	</a-entity>
+
+		<a-entity id="scene0" visible="false" position="0 6.25 -2">
+			<a-curvedimage src="#main" height="11.0" radius="10.7" theta-length="80"
+						   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 1 0"></a-curvedimage>
+			<a-curvedimage id="playGame" src="#play" radius="10" theta-length="14"
+						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="change()" position="0 -1 0">
+
+			</a-curvedimage>
+			<a-curvedimage id="howToPlay" src="#howto" radius="10" theta-length="14"
+						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="howToPlay()" position="0 -2 0">
+			</a-curvedimage>
+
+			<a-curvedimage id="beforeFlood" visible="false" src="#before" radius="10" theta-length="14"
+						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="waterOff()" position="0 -1 -0.01">
+			</a-curvedimage>
+			<a-curvedimage id="duringFlood" visible="false" src="#duringF" onclick="playScene()" radius="10" theta-length="14"
+						   rotation="0 174 0" scale="0.8 0.8 0.8" position="0 -2 -0.01">
+			</a-curvedimage>
+			<a-sky color="#19406e"></a-sky>
+		</a-entity>
+
+		<a-entity id="scene1" position="0 6.25 -10.5" visible="false">
+			<a-curvedimage src="#dontWhile" height="11.0" radius="10.7" theta-length="40"
+						   rotation="0 240 0" scale="0.8 0.8 0.8" position="0 0 8"></a-curvedimage>
+			<a-curvedimage src="#dosWhile" height="11.0" radius="10.7" theta-length="40"
+						   rotation="0 80 0" scale="0.8 0.8 0.8" position="0 0 8"></a-curvedimage>
+			<a-video id="video" width="16" height="12" src="#vid"></a-video>
+			<a-curvedimage id="menuButton" src="#menuBtn" radius="10" theta-length="14"
+						   rotation="28 174 -2.5" scale="0.8 0.8 0.8" onclick="gotoMenu()" position="0 -1 9">
+				<a-sky color="#19406e"></a-sky>
+		</a-entity>
+	</a-scene>
+	<script>
+		// AFRAME.registerComponent('auto-enter-vrzz', {
+		// 	init: function () {
+		// 		this.el.sceneEl.enterVR();
+		// 	}
+		// });
+		// window.addEventListener('vrdisplayactivate', function () {
+		// 	var scene = document.querySelector('a-scene');
+		// 	scene.enterVR();
+		// 	console.log(scene);
+		// 	console.log("CANT UNSEE IT CANT UNSEE IT CANT UNSEE IT CANT UNSEE IT CANT UNSEE IT CANT UNSEE IT CANT UNSEE IT CANT UNSEE IT CANT UNSEE IT ");
+		// });
+	</script>
+	<script type="text/javascript">
+
+		var vid = document.getElementById('vid');
+		console.log(vid);
+		var canCount = 0;
+
+		document.getElementById('video').addEventListener("click", function(e){
+			this.style.display = 'none';
+			vid.play();
+		}, false);
+
+		function sceneLoaded(){
+			console.log('hello');
+			document.querySelector('a-scene').enterVR();
+		}
+
+		function restartit() {
+			location.reload();
+		}
+
+		function givePoint(id) {
+			var score = parseInt(document.getElementById('score').getAttribute('value'));
+			// console.log(typeof score);
+			score = score + 10;
+			document.getElementById('score').setAttribute('value',score);
+			var can = document.getElementsByClassName('point');
+			var pointerz = document.getElementsByClassName('canPointer');
+			if(id == 6){
+				document.getElementById('instructions3').setAttribute('visible',true);
+				document.getElementById('valvetext1').setAttribute('value','check valve closed');
+				document.getElementById('valvetext2').setAttribute('value','');
+				document.getElementById('pointer1').setAttribute('visible','false')
+			}
+			else{
+				can[id].setAttribute('visible','false');
+				pointerz[id].setAttribute('visible','false');
+				canCount++
+			}
+			if(canCount == 4){
+				document.getElementById('instructions4').setAttribute('visible',true)
+			}
+		}
+
+		function playScene() {
+			document.getElementById('scene0').setAttribute('visible', 'false');
+			document.getElementById('scene2').setAttribute('visible', 'true')
+		}
+		function change(){
+			document.getElementById('playGame').setAttribute('visible', 'false');
+			document.getElementById('howToPlay').setAttribute('visible', 'false');
+			document.getElementById('beforeFlood').setAttribute('visible', 'true');
+			document.getElementById('duringFlood').setAttribute('visible', 'true')
+		}
+		function waterOff(){
+			document.getElementById('ocean').setAttribute('visible', 'false');
+			playScene()
+		}
+		function gotoMenu() {
+			document.getElementById('scene1').setAttribute('visible', 'false');
+			document.getElementById('scene0').setAttribute('visible', 'true')
+		}
+		function howToPlay() {
+			document.getElementById('scene1').setAttribute('visible', 'true');
+			document.getElementById('scene0').setAttribute('visible', 'false')
+		}
+
+		function nextpage(idx) {
+			console.log(idx);
+			if(idx == 1) {
+				document.getElementById('instructions1').setAttribute('visible', false)
+			}
+			document.getElementById('instructions2').setAttribute('visible', true);
+			if(idx == 2){
+					document.getElementById('instructions2').setAttribute('visible',false)
+			}
+			if(idx == 3){
+				document.getElementById('instructions3').setAttribute('visible',false);
+				document.getElementById('canPointerEntity').setAttribute('visible',true)
+			}
+			if(idx == 4){
+				document.getElementById('instructions4').setAttribute('visible',false);
+				document.getElementById('roofPointer').setAttribute('visible',true)
+			}
+			if(idx == 5){
+				document.getElementById('instructions5').setAttribute('visible',true);
+				document.getElementById('roofPointer').setAttribute('visible',false)
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		var subm = d3.select('.subm');
+		var trigger = 1;
+		var speed = 0.2;
+		var padding = 2.5;
+
+		// var moveToRoof = d3.select('.tempID');
+		// moveToRoof.on('click',teleport);
+		//
+		// function teleport(){
+		// 	console.log('teleport');
+		// 	var currentPosition = this.getAttribute('position');
+		// 	console.log(currentPosition);
+		// 	subm.attr('position', currentPosition);
+		// }
+
+		var front = d3.select('.front');
+		front.on('click', forward);
+		front.on('mouseenter', mouseenter);
+		front.on('mouseleave',mouseleave);
+
+		var back = d3.select('.back');
+		back.on('click', backward);
+		back.on('mouseenter', mouseenter);
+		back.on('mouseleave',mouseleave);
+
+		var left = d3.select('.left');
+		left.on('click', leftMove);
+		left.on('mouseenter', mouseenter);
+		left.on('mouseleave',mouseleave);
+
+		var right = d3.select('.right');
+		right.on('click', rightMove);
+		right.on('mouseenter', mouseenter);
+		right.on('mouseleave',mouseleave);
+
+		function mouseenter(){
+			console.log("Mouse Enter" + trigger);
+			trigger = 1;
+		}
+
+		function mouseleave(){
+			console.log("Mouse leave" + trigger);
+			trigger = 0;
+		}
+
+		function forward(){
+			console.log("Forward " + trigger);
+			var that = this;
+			setTimeout(function(){
+				console.log("MOVEING");
+				var currentPosition = that.getAttribute('position');
+				var sphere = d3.select(that);
+				console.log(currentPosition);
+				currentPosition["z"] += speed;
+				console.log(currentPosition);
+				sphere.attr('position', currentPosition);
+				currentPosition["z"] -= padding;
+				back.attr('position',currentPosition);
+				currentPosition["z"] += (padding/2);
+				subm.attr('position', currentPosition);
+				currentPosition["x"] -= (padding/2);
+				left.attr('position',currentPosition);
+				currentPosition["x"] += padding;
+				right.attr('position',currentPosition);
+				if(trigger){
+					forward.call(that);
+				}
+			}, 100)
+		}
+
+		function backward(){
+			console.log("Backward " + trigger);
+			var that = this;
+			setTimeout(function(){
+				console.log("MOVEING");
+				var currentPosition = that.getAttribute('position');
+				var oldPosition = that.getAttribute('position');
+				var sphere = d3.select(that);
+				console.log(currentPosition);
+				currentPosition["z"] -= speed;
+				console.log(currentPosition);
+				sphere.attr('position', currentPosition);
+				currentPosition["z"] += padding;
+				front.attr('position',currentPosition);
+				currentPosition["z"] -= (padding/2);
+				subm.attr('position', currentPosition);
+				currentPosition["x"] -= (padding/2);
+				left.attr('position',currentPosition);
+				currentPosition["x"] += padding;
+				right.attr('position',currentPosition);
+				if(trigger){
+					backward.call(that);
+				}
+			}, 100)
+		}
+
+		function leftMove(){
+			console.log("left " + trigger);
+			var that = this;
+			setTimeout(function(){
+				console.log("MOVEING");
+				var currentPosition = that.getAttribute('position');
+				var oldPosition = that.getAttribute('position');
+				var sphere = d3.select(that);
+				console.log(currentPosition);
+				currentPosition["x"] -= speed;
+				console.log(currentPosition);
+				sphere.attr('position', currentPosition);
+				currentPosition["x"] += padding;
+				right.attr('position', currentPosition);
+				currentPosition["x"] -= (padding/2);
+				subm.attr('position',currentPosition);
+				currentPosition["z"] -= (padding/2);
+				back.attr('position',currentPosition);
+				currentPosition["z"] += padding;
+				front.attr('position',currentPosition);
+
+				if(trigger){
+					leftMove.call(that);
+				}
+			}, 100)
+		}
+
+		function rightMove(){
+			console.log("right " + trigger);
+			var that = this;
+			setTimeout(function(){
+				console.log("MOVEING");
+				var currentPosition = that.getAttribute('position');
+				var oldPosition = that.getAttribute('position');
+				var sphere = d3.select(that);
+				console.log(currentPosition);
+				currentPosition["x"] += speed;
+				console.log(currentPosition);
+				sphere.attr('position', currentPosition);
+				currentPosition["x"] -= padding;
+				left.attr('position', currentPosition);
+				currentPosition["x"] += (padding/2);
+				subm.attr('position',currentPosition);
+				currentPosition["z"] -= (padding/2);
+				back.attr('position',currentPosition);
+				currentPosition["z"] += padding;
+				front.attr('position',currentPosition);
+				if(trigger){
+					rightMove.call(that);
+				}
+			}, 100)
+		}
+
+	</script>
+</body>
+</html>

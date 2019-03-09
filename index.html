@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Programming Club</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="manifest" href="./manifest.webmanifest">
+	<link href="images/favicon.png" rel="shortcut icon" type="image/png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="jumbotron">
+	<div class="row">
+      <div class="col-lg-6 text-center">
+        <img src="images/vive.png" class="rounded-circle" width="140" height="140">
+        <h2>HTC vive</h2>
+        <p>Use HTC vive</p>
+        <p><a class="btn btn-secondary" href="vive.html" role="button">Deploy &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-6 text-center">
+        <div class="col-lg-6 text-center">
+        <img src="images/daydream.png" class="rounded-circle" width="140" height="140">
+        <h2>Daydream</h2>
+        <p>Use google daydream</p>
+        <p><a class="btn btn-secondary" href="daydream.html" role="button">Deploy &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+    </div>
+    <script>
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('./sw.js')
+              .then(res=>{
+                console.info('Sw Registered');
+              })
+              .catch(err=>{
+                console.error('Error in Registering SW', err);
+              })
+    }
+    else
+      console.log('SW not supported');
+  </script>
+</body>
+</html>
