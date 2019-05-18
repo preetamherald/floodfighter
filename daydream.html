@@ -41,7 +41,8 @@
 		  <img id="menuBtn" src="images/menubtn.png">
 		  <img id="dontWhile" src="images/dontswhileflood.JPG">
 		  <img id="dosWhile" src="images/doswhileflood.JPG">
-		  <img id="floodWarning" src="images/floodwarning.png">
+			<img id="floodWarning" src="images/floodwarning.png">
+			<img id="floodWarning2" src="images/floodwarning2.png">
 		  <img id="controlsExplain" src="images/controlsExplain.png">
 		  <img id="continue" src="images/continue.png">
 		  <img id="stage2img" src="images/stage2.png">
@@ -169,6 +170,17 @@
 		</a-entity>
 
 			<a-box position="9.09887001644167 6.299476505302487 -13.949561294106223" color="tomato" depth="1" height="1" width="1" scale="0.32594592196228156 0.23831836238786325 0.7061697030813416" material="color:#d3d3d3" geometry=""></a-box>
+
+			<a-box scale="0.5 1 2" position="15.40 8.5 7"  color="#dde" onclick="nextpage(8)"></a-box>
+			<a-text id="closemcbtext" value="Click MCB to close" color="black" position="15.38 7.468 7.80" rotation="0 90 0"></a-text>
+			<a-text scale="2 2 2" id="closemcbbuttontext" value="MCB" color="#ff2211" position="15.68 8.468 7.571" rotation="0 90 0"></a-text>
+
+			<a-entity id="instructions2z" visible="false" position="20 1.5 7" rotation="0 180 0">
+				<a-curvedimage src="#floodWarning2" height="11.0" radius="10.7" theta-length="80"
+								 rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
+				<a-curvedimage src="#continue" radius="10" theta-length="14"
+								 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(9)" position="0 4.5 0"></a-curvedimage>
+			</a-entity>
 
 		<!--food can-->
 			<a-entity class="point" onclick="givePoint(0)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="25 5 -32" scale="10 10 10"></a-entity>
@@ -346,6 +358,14 @@
 				document.getElementById('instructions5').setAttribute('visible',true);
 				document.getElementById('scene2').setAttribute('visible',false)
 				document.getElementById('camx').setAttribute('position',"30.35 7.25 -7.43");
+			}
+			if(idx == 8){
+				document.getElementById('instructions2z').setAttribute('visible', true);
+				document.getElementById('closemcbbuttontext').setAttribute('color', 'green');
+				document.getElementById('closemcbtext').setAttribute('value', 'MCB closed');
+			}
+			if(idx == 9){
+				document.getElementById('instructions2z').setAttribute('visible', false);
 			}
 			if(idx == 10){
 				// document.getElementById('instructions5').setAttribute('visible',false);
