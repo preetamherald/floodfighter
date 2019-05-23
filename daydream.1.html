@@ -58,7 +58,7 @@
 		  <img id="menuBtnh" src="images/menubtnh.png">
 		  <img id="dontWhileh" src="images/dontswhilefloodh.JPG">
 		  <img id="dosWhileh" src="images/doswhilefloodh.png">
-			<img id="floodWarningh" src="images/floodwarningh.jpg">
+			<img id="floodWarningh" src="images/floodWarningh.png">
 			<img id="floodWarning2h" src="images/floodWarning2h.png">
 		  <img id="controlsExplainh" src="images/controlsExplainh.png">
 		  <img id="continueh" src="images/continueh.png">
@@ -98,200 +98,183 @@
 
 		<!-- hand -->
 		<a-entity id='cursor' daydream-controls="hand: right" controller-cursor="color: red; radius: 0.01" raycaster="objects: .front .back .left .right"></a-entity>
+	
+			<a-entity id="scene2" visible="false">
 
-		<a-entity id="scene2" visible="false">
-
-		<!--Water Test -->
-		 <a-entity id="ocean" position="11.23614888234351 1 0" ocean="density:20;width:100;depth:100" material="color:#9CE3F9;opacity:0.75;roughness:1" rotation="-90 0 0">
-		 </a-entity>
-
-	 <!--Load Model-->
-		<a-entity ply-model="src:modellibrary/magica_voxel/bed_room.ply" rotation="-90 0 0" position="2.8606506106514367 -0.38149268996288477 0" scale="0.5 0.5 0.5">
-		<a-entity id="environmentSound" geometry="" sound="src:music/zelda_forest_saria_song.mp3;loop:true;volume:0.3"></a-entity></a-entity>
-
-	  <a-entity ply-model="src:modellibrary/magica_voxel/bath_room.ply" rotation="-90 0 0" position="1.3122614508592694 -0.12096138524066191 -23.478461853190854" scale="0.5 0.5 0.5"></a-entity>
-
-	  <a-entity ply-model="src:modellibrary/magica_voxel/kitchen.ply" rotation="-90 0 0" position="36.23535082726076 -0.12096138524066191 -21.568761799695306" scale="0.5 0.5 0.5"></a-entity>
-
-	  <a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="37.784666220435895 0 20.x622" scale="0.6709547926014008 0.5 0.744250614380796"></a-entity>
-	  <a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 90 0" position="59.15742544196631 0 -13.165" scale="1.197 0.5 0.7412208988535162"></a-entity><a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 90 0" position="-1.4457429188867756 0 -13.165" scale="1.197 0.5 0.741"></a-entity>
-	  <a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="20.04689909272449 0 -26.60249120052255" scale="1.4953123873240877 0.5 0.74"></a-entity><a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="7.079128045969208 18.099912560446366 20.43476074435125" scale="0.8947749837762695 0.5 0.3"></a-entity>
-	  <a-entity ply-model="src:modellibrary/magica_voxel/floor.ply" rotation="-90 0 0" position="20.662470380808497 26.76908430307794 -12.162913780119752" scale="1.5 1.2 0.5"></a-entity>
-	  <a-entity ply-model="src:modellibrary/magica_voxel/floor.ply" rotation="-90 0 0" position="21.419810851902614 -0.1779357237363275 -12.74154307676053" scale="1.5 1.2 0.5"></a-entity>
-
-	  <a-entity ply-model="src:modellibrary/magica_voxel/red_car.ply" scale="0.4 0.4 0.4" rotation="-90 29.999999999999996 14.999999999999998" position="3.2930301438922243 0.2 28.301849445121036"><a-animation attribute="position" from"3.2930301438922243="" 0.0="" 28.301849445121036"="" to="3.2930301438922243 0.2 28.301849445121036" delay="1000" dir="alternate" dur="1000" repeat="indefinite"></a-animation></a-entity>
-
-	  <a-entity ply-model="src:modellibrary/magica_voxel/tree_stem.ply" scale="0.4 0.4 0.4" position="26.351812914450313 0.19996174858888602 -3.190670436596765"><a-animation attribute="position" from"26.351812914450313="" 0.0="" -3.190670436596765""="" to="26.351812914450313 0.2 -3.190670436596765" delay="50" dir="alternate" dur="1000" repeat="indefinite"></a-animation></a-entity>
-	  <a-entity ply-model="src:modellibrary/magica_voxel/stairs.ply" scale="10 6 7" position="52.886 35.235 25.531" rotation="0 180 -90"></a-entity>
-
-			<!--External Environment -->
-		<a-plane scale="100 100 100" material="color:#acca48" rotation="-90 0 0" geometry="" position="11.562746692591237 0 0"> </a-plane>
-		<a-entity id="instructions1" visible="true">
-			<a-curvedimage src="#floodWarning" height="11.0" radius="10.7" theta-length="80"
-						   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
-			<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
-						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(1)" position="0 5.5 0"></a-curvedimage>
-		</a-entity>
-		<a-entity id="instructions2" visible="false">
-			<a-curvedimage src="#controlsExplain" height="11.0" radius="10.7" theta-length="80"
-						   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
-			<a-curvedimage id="continue2" src="#continue" radius="10" theta-length="14"
-						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(2)" position="0 4.5 0"></a-curvedimage>
-		</a-entity>
-	<!--Direction Light-->
-		<a-entity light="color:#EEE;intensity:0.5" position="1 1 0"></a-entity>
-		<a-entity light="type:ambient;color:#474242" intensity="0.4"></a-entity>
-
-	<!--point Lights-->
-		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="-7 15 7"></a-entity>
-		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="6 15 7"></a-entity>
-		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="-7 15 -5.5"></a-entity>
-		<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="6 15 -5.5"></a-entity>
-		<a-entity light="decay:2;distance:25;intensity:0.7;type:point" position="41.26 21.71 -2.08"></a-entity>
-
-
-		<!--images -->
-		<a-plane position="7.346272631048093 8.5 -11.8" scale="4.5 7.2 1"  material="src:#zelda" geometry=""> </a-plane> <!--Zelda-->
-		<a-plane position="-0.5341706908703032 7.1 -11.8" scale="5 4.2 1"  material="src:#eye" geometry=""> </a-plane> <!--Eye-->
-		<a-plane position="14.78555100215316 8.5 3.8057218733059064" scale="7 9.5 1"  material="src:#jack" rotation="0 -90 0" geometry=""> </a-plane> <!--jack-->
-		<a-plane position="-3.56 7.86 7.026" scale="4.2 2.5 1" rotation="0 180 0"  material="src:#warning" geometry=""> </a-plane>
-			<!--<a-box scale="5 5 5" position="27.17 10.84 3.375" id="tempID" color="white"></a-box>-->
-			<a-box scale="1 25 15" position="27.17 13.65 4" color="#ffbf00"></a-box>
-			<a-entity position="26.62 4.936 -6.90">
-			<a-box scale="1 1 4" position="18 0 0" rotation="0 0 -45" color="red" onclick="nextpage(5)"></a-box>
-			<a-text id="roof" value="Go to Roof" color="white" scale="2 1 1" rotation="-45 -90 0" position="17.40 0.408 -0.79"></a-text>
-			</a-entity>
-
-			<a-entity id="roofPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="26.62 7 -6.90"
-					  scale="0.15 0.15 0.15" rotation="90 90 90" visible="false">
-				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
-
-		<a-box position="9.101 6.286 -14.371"
-		color="tomato" depth="1" height="1" width="1"
-		scale="1.4414369186377378 0.3035338460623169 0.34488297971855175"
-		material="" onclick="givePoint(6)" geometry="">
-		<a-animation attribute="rotation" begin="click"I
-		repeat="2" fill="forward" to="0 0 180"></a-animation></a-box>
-		<a-entity id="pointer1" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="9.101 8.286 -15.5"
-					  scale="0.15 0.15 0.15" rotation="90 180 90">
-		<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
-		<a-entity position="9.101 10.286 -19.071" rotation="0 180 0">
-			<a-box color="white" scale="2.8 1 0.1" position="0 0 -4.2"></a-box>
-			<a-text id="valvetext1" value="Click on the check valve" color="black" position="-1.16 0 -4"></a-text>
-			<a-text id="valvetext2" value="to close it" color="black" position="-0.45 -0.2 -4"></a-text>
-		</a-entity>
-		<a-entity id="instructions3" visible="false">
-			<a-curvedimage src="#stage2img" height="11.0" radius="10.7" theta-length="80"
-						   rotation="0 412 0" scale="0.8 0.8 0.8" position="2.5 7.5 -24.4"></a-curvedimage>
-			<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
-						   rotation="0 450 0" scale="0.8 0.8 0.8" onclick="nextpage(3)" position="2 5.5 -24.1"></a-curvedimage>
-		</a-entity>
-
-			<a-box position="9.09887001644167 6.299476505302487 -13.949561294106223" color="tomato" depth="1" height="1" width="1" scale="0.32594592196228156 0.23831836238786325 0.7061697030813416" material="color:#d3d3d3" geometry=""></a-box>
-
-			<a-box scale="0.5 1 2" position="15.40 8.5 7"  color="#dde" onclick="nextpage(8)"></a-box>
-			<a-text id="closemcbtext" value="Click MCB to close" color="black" position="15.38 7.468 7.80" rotation="0 90 0"></a-text>
-			<a-text scale="2 2 2" id="closemcbbuttontext" value="MCB" color="#ff2211" position="15.68 8.468 7.571" rotation="0 90 0"></a-text>
-
-			<a-entity id="instructions2z" visible="false" position="20 1.5 7" rotation="0 180 0">
-				<a-curvedimage src="#floodWarning2" height="11.0" radius="10.7" theta-length="80"
-								 rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
-				<a-curvedimage src="#continue" radius="10" theta-length="14"
-								 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(9)" position="0 4.5 0"></a-curvedimage>
-			</a-entity>
-
-		<!--food can-->
-			<a-entity class="point" onclick="givePoint(0)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="25 5 -32" scale="10 10 10"></a-entity>
-			<a-entity class="point" onclick="givePoint(1)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="40 5 -32" scale="10 10 10"></a-entity>
-			<a-entity class="point" onclick="givePoint(2)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -20" scale="10 10 10"></a-entity>
-			<a-entity class="point" onclick="givePoint(3)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -15" scale="10 10 10"></a-entity>
-
-			<a-entity id="canPointerEntity" visible="false">
-			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="28 8 -30"
-					  scale="0.15 0.15 0.15" rotation="90 180 90">
-				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
-
-			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="42 8 -30"
-					  scale="0.15 0.15 0.15" rotation="90 180 90">
-				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
-
-			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="44 8 -18"
-					  scale="0.15 0.15 0.15" rotation="90 90 90">
-				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
-
-			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="44 8 -13"
-					  scale="0.15 0.15 0.15" rotation="90 90 90">
-				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
-			</a-entity>
-
-			<a-entity id="instructions4" visible="false" position="27.5 0 5">
-				<a-curvedimage src="#stage3img" height="11.0" radius="10.7" theta-length="80"
-							   rotation="0 412 0" scale="0.8 0.8 0.8" position="2.5 7.5 -24.4"></a-curvedimage>
-				<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
-							   rotation="0 450 0" scale="0.8 0.8 0.8" onclick="nextpage(4)" position="2 5.5 -24.1"></a-curvedimage>
-			</a-entity>
-		<!-- movement spheres -->
-	  <a-entity class="front" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="0 7.25 -1" scale="0.1 0.1 0.1" rotation="0 0 90"></a-entity>
-    <a-entity class="back" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="0 7.25 -3" scale="0.1 0.1 0.1" rotation="0 180 90"></a-entity>
-    <a-entity class="left" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="-1 7.25 -2" scale="0.1 0.1 0.1" rotation="0 -90 90"></a-entity>
-    <a-entity class="right" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="1 7.25 -2" scale="0.1 0.1 0.1" rotation="0 90 90"></a-entity>
-
-	</a-entity>
-
-		<a-entity id="scene0" visible="true" position="0 6.25 -2">
-			<a-curvedimage src="#main" height="11.0" radius="10.7" theta-length="80"
-						   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 1 0"></a-curvedimage>
-			<a-curvedimage id="playGame" src="#play" radius="10" theta-length="14"
-						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="change()" position="0 -1 0">
-
-			</a-curvedimage>
-			<a-curvedimage id="howToPlay" src="#howto" radius="10" theta-length="14"
-						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="howToPlay()" position="0 -2 0">
-			</a-curvedimage>
-
-			<a-curvedimage id="beforeFlood" visible="false" src="#before" radius="10" theta-length="14"
-						   rotation="0 174 0" scale="0.8 0.8 0.8" onclick="waterOff()" position="0 -1 -0.01">
-			</a-curvedimage>
-			<a-curvedimage id="duringFlood" visible="false" src="#duringF" onclick="playScene()" radius="10" theta-length="14"
-						   rotation="0 174 0" scale="0.8 0.8 0.8" position="0 -2 -0.01">
-			</a-curvedimage>
-			<a-sky color="#19406e"></a-sky>
-		</a-entity>
-
-		<a-entity id="scene1" position="0 6.25 -10.5" visible="false">
-			<a-curvedimage src="#dontWhile" height="11.0" radius="10.7" theta-length="40"
-						   rotation="0 240 0" scale="0.8 0.8 0.8" position="0 0 8"></a-curvedimage>
-			<a-curvedimage src="#dosWhile" height="11.0" radius="10.7" theta-length="40"
-						   rotation="0 80 0" scale="0.8 0.8 0.8" position="0 0 8"></a-curvedimage>
-			<a-video id="video" width="16" height="12" src="#vid"></a-video>
-			<a-curvedimage id="menuButton" src="#menuBtn" radius="10" theta-length="14"
-						   rotation="28 174 -2.5" scale="0.8 0.8 0.8" onclick="gotoMenu()" position="0 -1 9">
-				<a-sky color="#19406e"></a-sky>
-		</a-entity>
-		<a-entity id="instructions5" position="30.6 7.25 -4.5" visible="false">
-			<a-curvedimage src="#stage4img" height="11.0" radius="10.7" theta-length="80"
-						   rotation="0 140 0" scale="0.8 0.8 0.8" position="0 0 0"></a-curvedimage>
-			<a-curvedimage id="menuButton" src="#menuBtn" radius="10" theta-length="14"
-						   rotation="28 174 -2.5" scale="0.8 0.8 0.8" onclick="nextpage(10)" position="0 0.813 -0.66">
-				<a-sky color="#19406e"></a-sky>
-		</a-entity>
-
-
-
-<!-- 	
-<a-entity id="lang" visible="true">
-		<a-sky color="#19406e"></a-sky>
-
-		<a-curvedimage src="#engImg" height="11.0" radius="10.7" theta-length="80"
-						   rotation="0 180 0" scale="0.8 0.8 0.8" position="-4 5 -15" onclick="nextpage(6)"></a-curvedimage>
-
-		<a-curvedimage src="#hinImg" height="11.0" radius="10.7" theta-length="80"
-						   rotation="0 100 0" scale="0.8 0.8 0.8" position="4 5 -15" onclick="nextpage(7)"></a-curvedimage>
-</a-entity>
-
- -->
-
-
+					<!--Water Test -->
+					 <a-entity id="ocean" position="11.23614888234351 1 0" ocean="density:20;width:100;depth:100" material="color:#9CE3F9;opacity:0.75;roughness:1" rotation="-90 0 0">
+					 </a-entity>
+			
+				 <!--Load Model-->
+					<a-entity ply-model="src:modellibrary/magica_voxel/bed_room.ply" rotation="-90 0 0" position="2.8606506106514367 -0.38149268996288477 0" scale="0.5 0.5 0.5">
+					<a-entity id="environmentSound" geometry="" sound="src:music/zelda_forest_saria_song.mp3;loop:true;volume:0.3"></a-entity></a-entity>
+			
+					<a-entity ply-model="src:modellibrary/magica_voxel/bath_room.ply" rotation="-90 0 0" position="1.3122614508592694 -0.12096138524066191 -23.478461853190854" scale="0.5 0.5 0.5"></a-entity>
+			
+					<a-entity ply-model="src:modellibrary/magica_voxel/kitchen.ply" rotation="-90 0 0" position="36.23535082726076 -0.12096138524066191 -21.568761799695306" scale="0.5 0.5 0.5"></a-entity>
+			
+					<a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="37.784666220435895 0 20.x622" scale="0.6709547926014008 0.5 0.744250614380796"></a-entity>
+					<a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 90 0" position="59.15742544196631 0 -13.165" scale="1.197 0.5 0.7412208988535162"></a-entity><a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 90 0" position="-1.4457429188867756 0 -13.165" scale="1.197 0.5 0.741"></a-entity>
+					<a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="20.04689909272449 0 -26.60249120052255" scale="1.4953123873240877 0.5 0.74"></a-entity><a-entity ply-model="src:modellibrary/magica_voxel/plain_wall.ply" rotation="-90 0 0" position="7.079128045969208 18.099912560446366 20.43476074435125" scale="0.8947749837762695 0.5 0.3"></a-entity>
+					<a-entity ply-model="src:modellibrary/magica_voxel/floor.ply" rotation="-90 0 0" position="20.662470380808497 26.76908430307794 -12.162913780119752" scale="1.5 1.2 0.5"></a-entity>
+					<a-entity ply-model="src:modellibrary/magica_voxel/floor.ply" rotation="-90 0 0" position="21.419810851902614 -0.1779357237363275 -12.74154307676053" scale="1.5 1.2 0.5"></a-entity>
+			
+					<a-entity ply-model="src:modellibrary/magica_voxel/red_car.ply" scale="0.4 0.4 0.4" rotation="-90 29.999999999999996 14.999999999999998" position="3.2930301438922243 0.2 28.301849445121036"><a-animation attribute="position" from"3.2930301438922243="" 0.0="" 28.301849445121036"="" to="3.2930301438922243 0.2 28.301849445121036" delay="1000" dir="alternate" dur="1000" repeat="indefinite"></a-animation></a-entity>
+			
+					<a-entity ply-model="src:modellibrary/magica_voxel/tree_stem.ply" scale="0.4 0.4 0.4" position="26.351812914450313 0.19996174858888602 -3.190670436596765"><a-animation attribute="position" from"26.351812914450313="" 0.0="" -3.190670436596765""="" to="26.351812914450313 0.2 -3.190670436596765" delay="50" dir="alternate" dur="1000" repeat="indefinite"></a-animation></a-entity>
+					<a-entity ply-model="src:modellibrary/magica_voxel/stairs.ply" scale="10 6 7" position="52.886 35.235 25.531" rotation="0 180 -90"></a-entity>
+			
+						<!--External Environment -->
+					<a-plane scale="100 100 100" material="color:#acca48" rotation="-90 0 0" geometry="" position="11.562746692591237 0 0"> </a-plane>
+					<a-entity id="instructions1" visible="true">
+						<a-curvedimage src="#floodWarningh" height="11.0" radius="10.7" theta-length="80"
+										 rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
+						<a-curvedimage id="continue1" src="#continueh" radius="10" theta-length="14"
+										 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(1)" position="0 5.5 0"></a-curvedimage>
+					</a-entity>
+					<a-entity id="instructions2" visible="false">
+						<a-curvedimage src="#controlsExplainh" height="11.0" radius="10.7" theta-length="80"
+										 rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
+						<a-curvedimage id="continue2" src="#continue" radius="10" theta-length="14"
+										 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(2)" position="0 4.5 0"></a-curvedimage>
+					</a-entity>
+				<!--Direction Light-->
+					<a-entity light="color:#EEE;intensity:0.5" position="1 1 0"></a-entity>
+					<a-entity light="type:ambient;color:#474242" intensity="0.4"></a-entity>
+			
+				<!--point Lights-->
+					<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="-7 15 7"></a-entity>
+					<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="6 15 7"></a-entity>
+					<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="-7 15 -5.5"></a-entity>
+					<a-entity light="type:point;intensity:0.7;distance:25;decay:2" position="6 15 -5.5"></a-entity>
+					<a-entity light="decay:2;distance:25;intensity:0.7;type:point" position="41.26 21.71 -2.08"></a-entity>
+			
+			
+					<!--images -->
+					<a-plane position="7.346272631048093 8.5 -11.8" scale="4.5 7.2 1"  material="src:#zelda" geometry=""> </a-plane> <!--Zelda-->
+					<a-plane position="-0.5341706908703032 7.1 -11.8" scale="5 4.2 1"  material="src:#eye" geometry=""> </a-plane> <!--Eye-->
+					<a-plane position="14.78555100215316 8.5 3.8057218733059064" scale="7 9.5 1"  material="src:#jack" rotation="0 -90 0" geometry=""> </a-plane> <!--jack-->
+					<a-plane position="-3.56 7.86 7.026" scale="4.2 2.5 1" rotation="0 180 0"  material="src:#warning" geometry=""> </a-plane>
+						<!--<a-box scale="5 5 5" position="27.17 10.84 3.375" id="tempID" color="white"></a-box>-->
+						<a-box scale="1 25 15" position="27.17 13.65 4" color="#ffbf00"></a-box>
+						<a-entity position="26.62 4.936 -6.90">
+						<a-box scale="1 1 4" position="18 0 0" rotation="0 0 -45" color="red" onclick="nextpage(5)"></a-box>
+						<a-text id="roof" value="Go to Roof" color="white" scale="2 1 1" rotation="-45 -90 0" position="17.40 0.408 -0.79"></a-text>
+						</a-entity>
+			
+						<a-entity id="roofPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="26.62 7 -6.90"
+									scale="0.15 0.15 0.15" rotation="90 90 90" visible="false">
+							<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
+			
+					<a-box position="9.101 6.286 -14.371"
+					color="tomato" depth="1" height="1" width="1"
+					scale="1.4414369186377378 0.3035338460623169 0.34488297971855175"
+					material="" onclick="givePoint(6)" geometry="">
+					<a-animation attribute="rotation" begin="click"I
+					repeat="2" fill="forward" to="0 0 180"></a-animation></a-box>
+					<a-entity id="pointer1" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="9.101 8.286 -15.5"
+									scale="0.15 0.15 0.15" rotation="90 180 90">
+					<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
+					<a-entity position="9.101 10.286 -19.071" rotation="0 180 0">
+						<a-box color="white" scale="2.8 1 0.1" position="0 0 -4.2"></a-box>
+						<a-text id="valvetext1" value="Click on the check valve" color="black" position="-1.16 0 -4"></a-text>
+						<a-text id="valvetext2" value="to close it" color="black" position="-0.45 -0.2 -4"></a-text>
+					</a-entity>
+					<a-entity id="instructions3" visible="false">
+						<a-curvedimage src="#stage2imgh" height="11.0" radius="10.7" theta-length="80"
+										 rotation="0 412 0" scale="0.8 0.8 0.8" position="2.5 7.5 -24.4"></a-curvedimage>
+						<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
+										 rotation="0 450 0" scale="0.8 0.8 0.8" onclick="nextpage(3)" position="2 5.5 -24.1"></a-curvedimage>
+					</a-entity>
+			
+						<a-box position="9.09887001644167 6.299476505302487 -13.949561294106223" color="tomato" depth="1" height="1" width="1" scale="0.32594592196228156 0.23831836238786325 0.7061697030813416" material="color:#d3d3d3" geometry=""></a-box>
+			
+						<a-box scale="0.5 1 2" position="15.40 8.5 7"  color="#dde" onclick="nextpage(8)"></a-box>
+						<a-text id="closemcbtext" value="Click MCB to close" color="black" position="15.38 7.468 7.80" rotation="0 90 0"></a-text>
+						<a-text scale="2 2 2" id="closemcbbuttontext" value="MCB" color="#ff2211" position="15.68 8.468 7.571" rotation="0 90 0"></a-text>
+			
+						<a-entity id="instructions2z" visible="false" position="20 1.5 7" rotation="0 180 0">
+							<a-curvedimage src="#floodWarning2h" height="11.0" radius="10.7" theta-length="80"
+											 rotation="0 140 0" scale="0.8 0.8 0.8" position="0 7.5 0"></a-curvedimage>
+							<a-curvedimage src="#continue" radius="10" theta-length="14"
+											 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="nextpage(9)" position="0 4.5 0"></a-curvedimage>
+						</a-entity>
+			
+					<!--food can-->
+						<a-entity class="point" onclick="givePoint(0)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="25 5 -32" scale="10 10 10"></a-entity>
+						<a-entity class="point" onclick="givePoint(1)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="40 5 -32" scale="10 10 10"></a-entity>
+						<a-entity class="point" onclick="givePoint(2)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -20" scale="10 10 10"></a-entity>
+						<a-entity class="point" onclick="givePoint(3)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -15" scale="10 10 10"></a-entity>
+			
+						<a-entity id="canPointerEntity" visible="false">
+						<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="28 8 -30"
+									scale="0.15 0.15 0.15" rotation="90 180 90">
+							<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
+			
+						<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="42 8 -30"
+									scale="0.15 0.15 0.15" rotation="90 180 90">
+							<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
+			
+						<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="44 8 -18"
+									scale="0.15 0.15 0.15" rotation="90 90 90">
+							<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
+			
+						<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="44 8 -13"
+									scale="0.15 0.15 0.15" rotation="90 90 90">
+							<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 450 90"></a-animation></a-entity>
+						</a-entity>
+			
+						<a-entity id="instructions4" visible="false" position="27.5 0 5">
+							<a-curvedimage src="#stage3imgh" height="11.0" radius="10.7" theta-length="80"
+											 rotation="0 412 0" scale="0.8 0.8 0.8" position="2.5 7.5 -24.4"></a-curvedimage>
+							<a-curvedimage id="continue1" src="#continue" radius="10" theta-length="14"
+											 rotation="0 450 0" scale="0.8 0.8 0.8" onclick="nextpage(4)" position="2 5.5 -24.1"></a-curvedimage>
+						</a-entity>
+					<!-- movement spheres -->
+					<a-entity class="front" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="0 7.25 -1" scale="0.1 0.1 0.1" rotation="0 0 90"></a-entity>
+					<a-entity class="back" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="0 7.25 -3" scale="0.1 0.1 0.1" rotation="0 180 90"></a-entity>
+					<a-entity class="left" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="-1 7.25 -2" scale="0.1 0.1 0.1" rotation="0 -90 90"></a-entity>
+					<a-entity class="right" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="1 7.25 -2" scale="0.1 0.1 0.1" rotation="0 90 90"></a-entity>
+			
+				</a-entity>
+			
+					<a-entity id="scene0" visible="true" position="0 6.25 -2">
+						<a-curvedimage src="#mainh" height="11.0" radius="10.7" theta-length="80"
+										 rotation="0 140 0" scale="0.8 0.8 0.8" position="0 1 0"></a-curvedimage>
+						<a-curvedimage id="playGame" src="#playh" radius="10" theta-length="14"
+										 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="change()" position="0 -1 0">
+			
+						</a-curvedimage>
+						<a-curvedimage id="howToPlay" src="#howtoh" radius="10" theta-length="14"
+										 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="howToPlay()" position="0 -2 0">
+						</a-curvedimage>
+			
+						<a-curvedimage id="beforeFlood" visible="false" src="#beforeh" radius="10" theta-length="14"
+										 rotation="0 174 0" scale="0.8 0.8 0.8" onclick="waterOff()" position="0 -1 -0.01">
+						</a-curvedimage>
+						<a-curvedimage id="duringFlood" visible="false" src="#duringFh" onclick="playScene()" radius="10" theta-length="14"
+										 rotation="0 174 0" scale="0.8 0.8 0.8" position="0 -2 -0.01">
+						</a-curvedimage>
+						<a-sky color="#19406e"></a-sky>
+					</a-entity>
+			
+					<a-entity id="scene1" position="0 6.25 -10.5" visible="false">
+						<a-curvedimage src="#dontWhileh" height="11.0" radius="10.7" theta-length="40"
+										 rotation="0 240 0" scale="0.8 0.8 0.8" position="0 0 8"></a-curvedimage>
+						<a-curvedimage src="#dosWhileh" height="11.0" radius="10.7" theta-length="40"
+										 rotation="0 80 0" scale="0.8 0.8 0.8" position="0 0 8"></a-curvedimage>
+						<a-video id="video" width="16" height="12" src="#vid"></a-video>
+						<a-curvedimage id="menuButton" src="#menuBtnh" radius="10" theta-length="14"
+										 rotation="28 174 -2.5" scale="0.8 0.8 0.8" onclick="gotoMenu()" position="0 -1 9">
+							<a-sky color="#19406e"></a-sky>
+					</a-entity>
+					<a-entity id="instructions5" position="30.6 7.25 -4.5" visible="false">
+						<a-curvedimage src="#stage4imgh" height="11.0" radius="10.7" theta-length="80"
+										 rotation="0 140 0" scale="0.8 0.8 0.8" position="0 0 0"></a-curvedimage>
+						<a-curvedimage id="menuButton" src="#menuBtnh" radius="10" theta-length="14"
+										 rotation="28 174 -2.5" scale="0.8 0.8 0.8" onclick="nextpage(10)" position="0 0.813 -0.66">
+							<a-sky color="#19406e"></a-sky>
+					</a-entity>
 
 	</a-scene>
 	<script>
