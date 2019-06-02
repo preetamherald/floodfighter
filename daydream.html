@@ -27,6 +27,8 @@
           <a-asset-item id="arrow-mtl" src="modellibrary/objects/arrow.mtl"></a-asset-item>
 		  <a-asset-item id="can-obj" src="modellibrary/objects/tinCan.obj"></a-asset-item>
 		  <a-asset-item id="can-mtl" src="modellibrary/objects/tinCan.mtl"></a-asset-item>
+		  <a-asset-item id="con-obj" src="modellibrary/objects/container.obj"></a-asset-item>
+		  <a-asset-item id="con-mtl" src="modellibrary/objects/container.mtl"></a-asset-item>
 
 		  <img id="zelda" src="images/poster3.jpg">
 		  <img id="jack" src="images/poster2.jpg">
@@ -204,9 +206,9 @@
 			<a-entity class="point" onclick="givePoint(0)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="25 5 -32" scale="10 10 10"></a-entity>
 			<a-entity class="point" onclick="givePoint(1)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="40 5 -32" scale="10 10 10"></a-entity>
 			<a-entity class="point" onclick="givePoint(2)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -20" scale="10 10 10"></a-entity>
-			<a-entity class="point" onclick="givePoint(3)" obj-model="obj:#can-obj; mtl:#can-mtl;" position="42 5 -15" scale="10 10 10"></a-entity>
+			<a-entity class="point" onclick="givePoint(3)" obj-model="obj:#con-obj; mtl:#con-mtl;" position="45.5 5 -12.5" scale="0.015 0.015 0.015" rotation="0 -90 0"></a-entity>
 
-			<a-entity id="canPointerEntity" visible="false">
+			<a-entity id="canPointerEntity" visible="false">S
 			<a-entity class="canPointer" obj-model="obj:#arrow-obj; mtl:#arrow-mtl" position="28 8 -30"
 					  scale="0.15 0.15 0.15" rotation="90 180 90">
 				<a-animation attribute="rotation" repeat="indefinate" fill="forward" to="90 540 90"></a-animation></a-entity>
